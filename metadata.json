@@ -1,0 +1,7 @@
+{
+  "name": "Stress Meter - AI Wellness",
+  "description": "A comprehensive mental wellness application featuring stress tracking, mood quizzes, AI-powered counseling, and creative image therapy.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
