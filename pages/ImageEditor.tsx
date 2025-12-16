@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Camera, Upload, Wand2, Download, AlertCircle } from 'lucide-react';
+import { Camera, Upload, Wand2, Download } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import { editImage } from '../services/geminiService';
 
@@ -20,7 +20,7 @@ const ImageEditor: React.FC = () => {
       const reader = new FileReader();
       reader.onloadend = () => {
         setSelectedImage(reader.result as string);
-        setResultImage(null); // Reset result when new image uploaded
+        setResultImage(null);
       };
       reader.readAsDataURL(file);
     }
@@ -49,89 +49,79 @@ const ImageEditor: React.FC = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-900 flex items-center gap-3">
-          <Camera className="text-teal-600" /> Art Therapy
+    <div className="container" style={{ padding: '2rem 1rem' }}>
+      <div style={{ marginBottom: '2rem' }}>
+        <h1 style={{ fontSize: '1.875rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--text-main)' }}>
+          <Camera color="var(--primary)" /> Art Therapy
         </h1>
-        <p className="text-slate-600 mt-2">
-          Use AI to visualize calmness or creatively express your emotions. 
-          Upload an image and ask the AI to change it (e.g., "Add a sunset background", "Make it look like a painting").
+        <p style={{ color: 'var(--text-muted)', marginTop: '0.5rem' }}>
+          Upload an image and ask the AI to change it creatively to visualize calmness.
         </p>
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-8">
-        {/* Input Section */}
-        <div className="space-y-6">
-          <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-            <h2 className="text-lg font-bold text-slate-900 mb-4">1. Upload Image</h2>
-            <div className="flex items-center justify-center w-full">
-              <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-64 border-2 border-slate-300 border-dashed rounded-lg cursor-pointer bg-slate-50 hover:bg-slate-100 transition-colors">
-                {selectedImage ? (
-                  <img src={selectedImage} alt="Preview" className="h-full object-contain p-2" />
-                ) : (
-                  <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                    <Upload className="w-10 h-10 mb-3 text-slate-400" />
-                    <p className="mb-2 text-sm text-slate-500"><span className="font-semibold">Click to upload</span></p>
-                    <p className="text-xs text-slate-500">PNG, JPG (MAX. 5MB)</p>
-                  </div>
-                )}
-                <input id="dropzone-file" type="file" className="hidden" accept="image/*" onChange={handleImageUpload} />
-              </label>
-            </div>
+      <div className="grid grid-cols-1 md-grid-cols-2 gap-8">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          <div className="card">
+            <h2 style={{ fontSize: '1.125rem', fontWeight: 700, marginBottom: '1rem' }}>1. Upload Image</h2>
+            <label style={{ 
+              border: '2px dashed var(--border-color)', borderRadius: 'var(--radius-md)', 
+              height: '200px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+              cursor: 'pointer', background: '#f8fafc' 
+            }}>
+              {selectedImage ? (
+                <img src={selectedImage} alt="Preview" style={{ maxHeight: '100%', maxWidth: '100%', objectFit: 'contain' }} />
+              ) : (
+                <>
+                  <Upload size={32} color="#94a3b8" style={{ marginBottom: '0.5rem' }} />
+                  <span style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>Click to upload</span>
+                </>
+              )}
+              <input type="file" hidden accept="image/*" onChange={handleImageUpload} />
+            </label>
           </div>
 
-          <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-            <h2 className="text-lg font-bold text-slate-900 mb-4">2. Describe Change</h2>
-            <div className="space-y-4">
-              <textarea
-                value={prompt}
-                onChange={(e) => setPrompt(e.target.value)}
-                placeholder="E.g., Make the sky purple, add a cat in the corner, turn this into a sketch..."
-                className="w-full rounded-lg border-slate-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 p-3 min-h-[100px]"
-              />
-              <button
-                onClick={handleEdit}
-                disabled={loading || !selectedImage || !prompt}
-                className="w-full flex items-center justify-center bg-teal-600 text-white px-4 py-3 rounded-lg font-semibold hover:bg-teal-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-              >
-                {loading ? (
-                  <>Processing...</>
-                ) : (
-                  <><Wand2 className="mr-2 h-5 w-5" /> Generate Magic</>
-                )}
-              </button>
-            </div>
+          <div className="card">
+            <h2 style={{ fontSize: '1.125rem', fontWeight: 700, marginBottom: '1rem' }}>2. Describe Change</h2>
+            <textarea
+              value={prompt}
+              onChange={(e) => setPrompt(e.target.value)}
+              placeholder="E.g., Make the sky purple, add a cat..."
+              className="input-field"
+              style={{ minHeight: '100px', resize: 'vertical' }}
+            />
+            <button
+              onClick={handleEdit}
+              disabled={loading || !selectedImage || !prompt}
+              className="btn btn-primary"
+              style={{ width: '100%', opacity: (loading || !selectedImage) ? 0.6 : 1 }}
+            >
+              {loading ? 'Processing...' : <><Wand2 size={18} style={{ marginRight: '0.5rem' }} /> Generate Magic</>}
+            </button>
           </div>
         </div>
 
-        {/* Output Section */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col h-full">
-          <h2 className="text-lg font-bold text-slate-900 mb-4">Result</h2>
-          <div className="flex-1 bg-slate-50 rounded-xl flex items-center justify-center border border-slate-200 min-h-[400px] relative overflow-hidden">
-            {loading ? (
-              <div className="flex flex-col items-center gap-4">
-                <div className="w-12 h-12 border-4 border-teal-200 border-t-teal-600 rounded-full animate-spin"></div>
-                <p className="text-slate-500 font-medium animate-pulse">AI is reimagining your image...</p>
-              </div>
-            ) : resultImage ? (
-              <img src={resultImage} alt="Edited Result" className="max-w-full max-h-full object-contain" />
-            ) : (
-              <div className="text-center p-8 text-slate-400">
-                <Camera className="w-16 h-16 mx-auto mb-4 opacity-50" />
-                <p>Your creation will appear here</p>
-              </div>
-            )}
-          </div>
-          {resultImage && (
-             <a 
-               href={resultImage} 
-               download="stress-meter-art.png"
-               className="mt-4 flex items-center justify-center w-full border border-slate-300 text-slate-700 px-4 py-3 rounded-lg font-medium hover:bg-slate-50 transition-colors"
-             >
-               <Download className="mr-2 h-5 w-5" /> Download Art
+        <div className="card" style={{ display: 'flex', flexDirection: 'column' }}>
+           <h2 style={{ fontSize: '1.125rem', fontWeight: 700, marginBottom: '1rem' }}>Result</h2>
+           <div style={{ 
+             background: '#f8fafc', flex: 1, minHeight: '400px', borderRadius: 'var(--radius-md)', 
+             border: '1px solid var(--border-color)', display: 'flex', alignItems: 'center', justifyContent: 'center' 
+           }}>
+              {loading ? (
+                 <div style={{ color: 'var(--primary)', fontWeight: 600 }}>Creating art...</div>
+              ) : resultImage ? (
+                 <img src={resultImage} alt="Result" style={{ maxWidth: '100%', maxHeight: '400px', objectFit: 'contain' }} />
+              ) : (
+                 <div style={{ color: 'var(--text-muted)', textAlign: 'center' }}>
+                    <Camera size={48} style={{ opacity: 0.2, margin: '0 auto 1rem' }} />
+                    <p>Your creation will appear here</p>
+                 </div>
+              )}
+           </div>
+           {resultImage && (
+             <a href={resultImage} download="art-therapy.png" className="btn btn-secondary" style={{ marginTop: '1rem', justifyContent: 'center' }}>
+               <Download size={18} style={{ marginRight: '0.5rem' }} /> Download
              </a>
-          )}
+           )}
         </div>
       </div>
     </div>

@@ -4,6 +4,7 @@ import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from './context/AuthContext';
 
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import ProtectedRoute from './components/ProtectedRoute';
 
 import Landing from './pages/Landing';
@@ -20,49 +21,52 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
+        <div className="min-h-screen bg-slate-50 font-sans text-slate-900 flex flex-col">
           <Navbar />
-          <Routes>
-            <Route path="/" element={<Landing />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            
-            <Route path="/dashboard" element={
-              <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
-            } />
-            
-            <Route path="/quiz" element={
-              <ProtectedRoute>
-                <Quiz />
-              </ProtectedRoute>
-            } />
-            
-            <Route path="/history" element={
-              <ProtectedRoute>
-                <History />
-              </ProtectedRoute>
-            } />
-            
-            <Route path="/chatbot" element={
-              <ProtectedRoute>
-                <Chatbot />
-              </ProtectedRoute>
-            } />
+          <div style={{ flex: 1 }}>
+            <Routes>
+              <Route path="/" element={<Landing />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              
+              <Route path="/dashboard" element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              } />
+              
+              <Route path="/quiz" element={
+                <ProtectedRoute>
+                  <Quiz />
+                </ProtectedRoute>
+              } />
+              
+              <Route path="/history" element={
+                <ProtectedRoute>
+                  <History />
+                </ProtectedRoute>
+              } />
+              
+              <Route path="/chatbot" element={
+                <ProtectedRoute>
+                  <Chatbot />
+                </ProtectedRoute>
+              } />
 
-            <Route path="/image-editor" element={
-              <ProtectedRoute>
-                <ImageEditor />
-              </ProtectedRoute>
-            } />
+              <Route path="/image-editor" element={
+                <ProtectedRoute>
+                  <ImageEditor />
+                </ProtectedRoute>
+              } />
 
-            <Route path="/doctors" element={
-              <ProtectedRoute>
-                <Doctors />
-              </ProtectedRoute>
-            } />
-          </Routes>
+              <Route path="/doctors" element={
+                <ProtectedRoute>
+                  <Doctors />
+                </ProtectedRoute>
+              } />
+            </Routes>
+          </div>
+          <Footer />
           <Toaster 
             position="top-right"
             toastOptions={{
