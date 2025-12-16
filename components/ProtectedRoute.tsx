@@ -2,7 +2,8 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
-const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
+// Fix: Make children optional to resolve TypeScript error regarding missing children property in usage
+const ProtectedRoute = ({ children }: { children?: React.ReactNode }) => {
   const { user } = useAuth();
 
   if (!user) {

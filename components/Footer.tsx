@@ -1,25 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Brain, Twitter, Instagram, Linkedin, Mail, Heart, ArrowUpRight } from 'lucide-react';
+import { Brain, Twitter, Instagram, Linkedin, Mail, Heart } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
     <footer className="footer">
+      <div className="footer-orb" style={{ top: '-100px', right: '-100px' }}></div>
       <div className="container">
         <div className="footer-grid">
           {/* Brand Column */}
           <div className="footer-col">
             <div className="footer-brand">
-              <Brain size={28} className="text-teal" />
+              <div style={{ background: 'linear-gradient(135deg, #0d9488, #2dd4bf)', padding: '0.5rem', borderRadius: '0.5rem', display: 'flex' }}>
+                 <Brain size={24} color="white" />
+              </div>
               <span>StressMeter</span>
             </div>
             <p className="footer-text">
               Empowering your mental wellness journey through advanced AI technology and compassionate professional care.
             </p>
             <div className="social-links">
-              <a href="#" className="social-icon" aria-label="Twitter"><Twitter size={20} /></a>
-              <a href="#" className="social-icon" aria-label="Instagram"><Instagram size={20} /></a>
-              <a href="#" className="social-icon" aria-label="LinkedIn"><Linkedin size={20} /></a>
+              <a href="#" className="social-icon" aria-label="Twitter"><Twitter size={18} /></a>
+              <a href="#" className="social-icon" aria-label="Instagram"><Instagram size={18} /></a>
+              <a href="#" className="social-icon" aria-label="LinkedIn"><Linkedin size={18} /></a>
             </div>
           </div>
 
@@ -51,7 +54,7 @@ const Footer: React.FC = () => {
             <p className="footer-text">Subscribe for tips to maintain your inner calm.</p>
             <div className="newsletter-form">
               <input type="email" placeholder="Email address" />
-              <button aria-label="Subscribe"><Mail size={18} /></button>
+              <button aria-label="Subscribe" className="btn-primary" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Mail size={18} /></button>
             </div>
           </div>
         </div>
@@ -65,8 +68,8 @@ const Footer: React.FC = () => {
              <a href="#">Terms of Service</a>
              <a href="#">Cookie Settings</a>
           </div>
-          <div className="made-with">
-            Made with <Heart size={14} fill="#ef4444" color="#ef4444" style={{margin: '0 4px'}} /> for peace of mind
+          <div className="made-with" style={{ opacity: 0.8 }}>
+            Made with <Heart size={14} fill="#ef4444" color="#ef4444" style={{margin: '0 4px', display: 'inline'}} /> for peace of mind
           </div>
         </div>
       </div>
