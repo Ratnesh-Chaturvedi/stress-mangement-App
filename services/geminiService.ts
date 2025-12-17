@@ -12,8 +12,8 @@ const getClient = () => {
 export const getChatResponse = async (history: ChatMessage[], newMessage: string): Promise<string> => {
   try {
     const ai = getClient();
-    // Using gemini-3-pro-preview for complex text tasks (Chatbot)
-    const model = 'gemini-3-pro-preview';
+    // Using gemini-2.5-flash for faster responses and better stability in deployment
+    const model = 'gemini-2.5-flash';
     
     // Transform history to format expected by API if needed, 
     // but simpler to just send the conversation as a prompt or use chat session.
