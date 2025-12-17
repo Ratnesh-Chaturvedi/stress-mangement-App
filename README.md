@@ -75,6 +75,20 @@ API_KEY=your_actual_api_key_here
 
 *Note: The application uses `vite.config.ts` to securely expose this specific variable to the client-side application.*
 
+## ☁️ Deployment (Vercel)
+
+When deploying to Vercel, the `.env` file is not uploaded. You must set the environment variable in the Vercel Dashboard.
+
+1.  Go to your Project Settings on Vercel.
+2.  Navigate to **Environment Variables**.
+3.  Add a new variable:
+    *   **Key:** `API_KEY`
+    *   **Value:** `your_actual_google_gemini_api_key`
+4.  Redeploy your application.
+
+**Troubleshooting Deployment:**
+If the Chatbot or Art Therapy features fail with "API Key is missing", ensure you have added the `API_KEY` exactly as shown above in the Vercel settings and redeployed (a simple rebuild is required for the variable to be embedded).
+
 ## 📂 Project Structure
 
 ```
