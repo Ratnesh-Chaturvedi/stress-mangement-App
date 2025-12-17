@@ -2,7 +2,7 @@ import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
 import { ChatMessage } from '../types';
 
 const getClient = () => {
-  const apiKey = process.env.API_KEY;
+  const apiKey ='AIzaSyBKcfv59Z4bUCtpSSmSdWDqNViaGSbgYkw';
   if (!apiKey) {
     throw new Error("API Key is missing");
   }
@@ -13,7 +13,8 @@ export const getChatResponse = async (history: ChatMessage[], newMessage: string
   try {
     const ai = getClient();
     // Using gemini-2.5-flash for faster responses and better stability in deployment
-    const model = 'gemini-2.5-flash';
+        const model = 'gemini-robotics-er-1.5-preview';
+
     
     // Transform history to format expected by API if needed, 
     // but simpler to just send the conversation as a prompt or use chat session.
