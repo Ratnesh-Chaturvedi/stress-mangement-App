@@ -61,7 +61,7 @@ const Doctors: React.FC = () => {
         <Search style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8' }} size={20} />
       </div>
 
-      <div className="grid grid-cols-1 md-grid-cols-2 grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md-grid-cols-2 lg-grid-cols-3 gap-8">
         {filteredDoctors.length > 0 ? (
           filteredDoctors.map((doc) => (
             <div key={doc.id} className="card" style={{ padding: 0, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>

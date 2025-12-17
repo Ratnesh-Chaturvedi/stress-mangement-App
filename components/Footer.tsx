@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Brain, Twitter, Instagram, Linkedin, Mail, Heart } from 'lucide-react';
+import { Brain, Twitter, Instagram, Linkedin, Mail } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -67,9 +67,6 @@ const Footer: React.FC = () => {
              <a href="#">Privacy Policy</a>
              <a href="#">Terms of Service</a>
              <a href="#">Cookie Settings</a>
-          </div>
-          <div className="made-with" style={{ opacity: 0.8 }}>
-            Made with <Heart size={14} fill="#ef4444" color="#ef4444" style={{margin: '0 4px', display: 'inline'}} /> for peace of mind
           </div>
         </div>
       </div>

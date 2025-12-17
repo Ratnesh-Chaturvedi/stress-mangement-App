@@ -36,7 +36,7 @@ const Landing: React.FC = () => {
             A smart companion for your mental journey. Track stress, analyze moods, and find clarity with our advanced AI counselor and creative therapy tools.
           </p>
 
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', marginBottom: '5rem', animation: 'fadeIn 1.4s ease-out' }}>
+          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', marginBottom: '5rem', animation: 'fadeIn 1.4s ease-out', flexWrap: 'wrap' }}>
             <Link to="/register" className="btn btn-primary" style={{ padding: '1rem 2.5rem', fontSize: '1.125rem' }}>
               Get Started <ArrowRight size={20} style={{ marginLeft: '0.5rem' }} />
             </Link>
@@ -52,9 +52,9 @@ const Landing: React.FC = () => {
             padding: '2rem', maxWidth: '1000px', margin: '0 auto', animation: 'fadeIn 1.6s ease-out' 
           }}>
             {[
-              { label: 'Active Users', value: '25k+', icon: Users },
-              { label: 'Moods Logged', value: '1M+', icon: Activity },
-              { label: 'AI Responses', value: '500k+', icon: MessageCircle },
+              { label: 'Active Users', value: '15+', icon: Users },
+              { label: 'Moods Logged', value: '150+', icon: Activity },
+              { label: 'AI Responses', value: '500+', icon: MessageCircle },
               { label: 'User Rating', value: '4.9/5', icon: Star },
             ].map((stat, idx) => (
               <div key={idx} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -75,7 +75,7 @@ const Landing: React.FC = () => {
             <p style={{ color: '#94a3b8' }}>Everything you need to maintain a balanced mind.</p>
           </div>
           
-          <div className="feature-grid">
+          <div className="grid grid-cols-1 md-grid-cols-2 lg-grid-cols-4">
              {[
               { title: 'Mood Tracking', desc: 'Simple daily check-ins to monitor emotional patterns.', icon: Activity, color: '#60a5fa' },
               { title: 'AI Counselor', desc: '24/7 chat support for immediate stress relief tips.', icon: Brain, color: '#2dd4bf' },

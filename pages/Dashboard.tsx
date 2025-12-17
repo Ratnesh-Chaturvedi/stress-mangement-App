@@ -23,7 +23,7 @@ const Dashboard: React.FC = () => {
         <p style={{ color: 'var(--text-muted)' }}>Here's your wellness overview for today.</p>
       </div>
 
-      <div className="grid grid-cols-1 md-grid-cols-2 grid-cols-4 gap-6" style={{ marginBottom: '2rem' }}>
+      <div className="grid grid-cols-1 md-grid-cols-2 lg-grid-cols-4 gap-6" style={{ marginBottom: '2rem' }}>
         {/* Quick Action Card - Quiz */}
         <div className="card card-primary">
           <div style={{ position: 'relative', zIndex: 10 }}>

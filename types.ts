@@ -1,3 +1,4 @@
+
 export interface User {
   id: string;
   name: string;
@@ -12,6 +13,7 @@ export interface QuizResult {
   maxScore: number;
   date: string;
   feedback: string;
+  suggestions?: string[];
 }
 
 export interface ChatMessage {
