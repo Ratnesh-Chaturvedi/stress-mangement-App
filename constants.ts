@@ -48,7 +48,7 @@ export const MOCK_DOCTORS: Doctor[] = [
 export const QUIZZES: Record<string, QuizData> = {
   [QuizType.STRESS]: {
     title: "Stress Assessment",
-    description: "Evaluate your current stress levels based on recent feelings.",
+    description: "Evaluate your current stress levels based on your feelings over the last month. (Higher score indicates higher stress)",
     questions: [
       {
         id: 1,
@@ -93,12 +93,78 @@ export const QUIZZES: Record<string, QuizData> = {
           { value: 3, label: "Fairly Often" },
           { value: 4, label: "Very Often" }
         ]
+      },
+      {
+        id: 5,
+        text: "In the last month, how often have you found yourself thinking about things that you have to accomplish?",
+        options: [
+          { value: 0, label: "Never" },
+          { value: 1, label: "Almost Never" },
+          { value: 2, label: "Sometimes" },
+          { value: 3, label: "Fairly Often" },
+          { value: 4, label: "Very Often" }
+        ]
+      },
+      {
+        id: 6,
+        text: "In the last month, how often have you been able to control irritations in your life?",
+        options: [
+          { value: 4, label: "Never" },
+          { value: 3, label: "Almost Never" },
+          { value: 2, label: "Sometimes" },
+          { value: 1, label: "Fairly Often" },
+          { value: 0, label: "Very Often" }
+        ]
+      },
+      {
+        id: 7,
+        text: "In the last month, how often have you felt that you were on top of things?",
+        options: [
+          { value: 4, label: "Never" },
+          { value: 3, label: "Almost Never" },
+          { value: 2, label: "Sometimes" },
+          { value: 1, label: "Fairly Often" },
+          { value: 0, label: "Very Often" }
+        ]
+      },
+      {
+        id: 8,
+        text: "In the last month, how often have you been angered because of things that were outside of your control?",
+        options: [
+          { value: 0, label: "Never" },
+          { value: 1, label: "Almost Never" },
+          { value: 2, label: "Sometimes" },
+          { value: 3, label: "Fairly Often" },
+          { value: 4, label: "Very Often" }
+        ]
+      },
+      {
+        id: 9,
+        text: "In the last month, how often have you felt nervous and 'stressed'?",
+        options: [
+          { value: 0, label: "Never" },
+          { value: 1, label: "Almost Never" },
+          { value: 2, label: "Sometimes" },
+          { value: 3, label: "Fairly Often" },
+          { value: 4, label: "Very Often" }
+        ]
+      },
+      {
+        id: 10,
+        text: "In the last month, how often have you felt that you could not cope with all the things that you had to do?",
+        options: [
+          { value: 0, label: "Never" },
+          { value: 1, label: "Almost Never" },
+          { value: 2, label: "Sometimes" },
+          { value: 3, label: "Fairly Often" },
+          { value: 4, label: "Very Often" }
+        ]
       }
     ]
   },
   [QuizType.MOOD]: {
     title: "Mood Tracker",
-    description: "Check in with your emotional state today.",
+    description: "Check in with your emotional state today. (Higher score indicates better mood)",
     questions: [
       {
         id: 1,
@@ -131,6 +197,83 @@ export const QUIZZES: Record<string, QuizData> = {
           { value: 3, label: "Neutral" },
           { value: 4, label: "Hopeful" },
           { value: 5, label: "Excited" }
+        ]
+      },
+      {
+        id: 4,
+        text: "How often have you felt down, depressed, or hopeless recently?",
+        options: [
+          { value: 1, label: "All the time" },
+          { value: 2, label: "Often" },
+          { value: 3, label: "Sometimes" },
+          { value: 4, label: "Rarely" },
+          { value: 5, label: "Not at all" }
+        ]
+      },
+      {
+        id: 5,
+        text: "How would you rate your quality of sleep last night?",
+        options: [
+          { value: 1, label: "Very Poor" },
+          { value: 2, label: "Poor" },
+          { value: 3, label: "Average" },
+          { value: 4, label: "Good" },
+          { value: 5, label: "Excellent" }
+        ]
+      },
+      {
+        id: 6,
+        text: "How easily have you been able to concentrate on things like reading or work?",
+        options: [
+          { value: 1, label: "Not at all" },
+          { value: 2, label: "With difficulty" },
+          { value: 3, label: "Somewhat" },
+          { value: 4, label: "Reasonably well" },
+          { value: 5, label: "Very easily" }
+        ]
+      },
+      {
+        id: 7,
+        text: "How much have you been enjoying the company of others?",
+        options: [
+          { value: 1, label: "Not at all" },
+          { value: 2, label: "A little" },
+          { value: 3, label: "Moderately" },
+          { value: 4, label: "Quite a bit" },
+          { value: 5, label: "A lot" }
+        ]
+      },
+      {
+        id: 8,
+        text: "How do you feel about your self-image today?",
+        options: [
+          { value: 1, label: "Very Negative" },
+          { value: 2, label: "Negative" },
+          { value: 3, label: "Neutral" },
+          { value: 4, label: "Positive" },
+          { value: 5, label: "Very Positive" }
+        ]
+      },
+      {
+        id: 9,
+        text: "How calm and relaxed do you feel right now?",
+        options: [
+          { value: 1, label: "Not at all" },
+          { value: 2, label: "Slightly" },
+          { value: 3, label: "Moderately" },
+          { value: 4, label: "Very" },
+          { value: 5, label: "Extremely" }
+        ]
+      },
+      {
+        id: 10,
+        text: "How well are you able to laugh and see the funny side of things today?",
+        options: [
+          { value: 1, label: "Not at all" },
+          { value: 2, label: "Rarely" },
+          { value: 3, label: "Sometimes" },
+          { value: 4, label: "Often" },
+          { value: 5, label: "As much as usual" }
         ]
       }
     ]
